@@ -1,30 +1,12 @@
 [
-  {
-    "id": "cat-toy-001",
-    "name_hu": "Horgolt macskajáték - csörgős",
-    "name_en": "Crochet Cat Toy - with Bell",
-    "price": 2990,
-    "image": "https://via.placeholder.com/150?text=Cat+Toy+1",
-    "description_hu": "Kézzel horgolt kerek macskajáték, csörgővel",
-    "description_en": "Hand-crocheted round cat toy with bell"
-  },
-  {
-    "id": "cat-toy-002",
-    "name_hu": "Horgolt macskajáték - egér forma",
-    "name_en": "Crochet Cat Toy - Mouse Shape",
-    "price": 2590,
-    "image": "https://via.placeholder.com/150?text=Cat+Toy+2",
-    "description_hu": "Kézzel horgolt egér forma, cicák kedvence",
-    "description_en": "Hand-crocheted mouse shape, cats' favorite"
-  },
-  {
-    "id": "cat-toy-003",
-    "name_hu": "Horgolt macskajáték - gömb",
-    "name_en": "Crochet Cat Toy - Ball",
-    "price": 1990,
-    "image": "https://via.placeholder.com/150?text=Cat+Toy+3",
-    "description_hu": "Kicsi horgolt labda csörgővel, játék a cicáknak",
-    "description_en": "Small crochet ball with bell, fun for cats"
-  }
+    {"id":1,"name_hu":"Macskajáték 1","name_en":"Cat Toy 1","price":5.00,"image":"./assets/img/1.png"},
+    {"id":2,"name_hu":"Macskajáték 2","name_en":"Cat Toy 2","price":6.50,"image":"./assets/img/2.png"},
+    {"id":3,"name_hu":"Macskajáték 3","name_en":"Cat Toy 3","price":4.50,"image":"./assets/img/3.png"},
+    {"id":4,"name_hu":"Macskajáték 4","name_en":"Cat Toy 4","price":7.00,"image":"./assets/img/4.png"},
+    {"id":5,"name_hu":"Macskajáték 5","name_en":"Cat Toy 5","price":5.50,"image":"./assets/img/5.png"},
+    {"id":6,"name_hu":"Macskajáték 6","name_en":"Cat Toy 6","price":6.00,"image":"./assets/img/6.png"},
+    {"id":7,"name_hu":"Macskajáték 7","name_en":"Cat Toy 7","price":4.80,"image":"./assets/img/7.png"},
+    {"id":8,"name_hu":"Macskajáték 8","name_en":"Cat Toy 8","price":5.20,"image":"./assets/img/8.png"},
+    {"id":9,"name_hu":"Macskajáték 9","name_en":"Cat Toy 9","price":6.10,"image":"./assets/img/9.png"},
+    {"id":10,"name_hu":"Macskajáték 10","name_en":"Cat Toy 10","price":7.20,"image":"./assets/img/10.png"}
 ]
-

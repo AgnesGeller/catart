@@ -1,76 +1,48 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-let currentLang = 'hu';
 
-async function renderCart() {
-    const container = document.getElementById('cart-items');
-    container.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((p, index) => {
-        total += p.price;
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-            <img src="./img/${p.image}" alt="${currentLang === 'hu' ? p.name_hu : p.name_en}">
-            <div class="cart-item-details">
-                <h3>${currentLang === 'hu' ? p.name_hu : p.name_en}</h3>
-                <p>${currentLang === 'hu' ? p.description_hu : p.description_en}</p>
-                <span>${p.price} Ft</span>
-            </div>
-            <button class="remove" onclick="removeFromCart(${index})">Törlés / Remove</button>
-        `;
-        container.appendChild(div);
-    });
-
-    document.getElementById('totalPrice').textContent = total + ' Ft';
-
-    const exchangeRate = await getExchangeRate();
-    const totalGBP = (total * exchangeRate).toFixed(2);
-
-    paypal.Buttons({
-        style: {
-            layout: 'vertical',
-            color: 'gold',
-            shape: 'rect',
-            label: 'paypal',
-            tagline: false
-        },
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: totalGBP,
-                        currency_code: "GBP"
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Payment successful: ' + details.payer.name.given_name);
-                cart = [];
-                localStorage.setItem('cart', JSON.stringify(cart));
-                renderCart();
-            });
-        }
-    }).render('#paypal-button-container');
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-}
-
-async function getExchangeRate() {
-    try {
-        const res = await fetch('https://api.exchangerate.host/latest?base=HUF&symbols=GBP');
-        const data = await res.json();
-        return data.rates.GBP;
-    } catch (err) {
-        console.error('Error fetching exchange rate', err);
-        return 0.002;
+function addToCart(productId) {
+    if (!cart.includes(productId)) {
+        cart.push(productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Termék hozzáadva a kosárhoz / Product added to cart');
+    } else {
+        alert('Ez a termék már a kosárban van / Already in cart');
     }
 }
 
-renderCart();
+async function displayCart() {
+    const response = await fetch('./assets/Js/products.json');
+    const products = await response.json();
+
+    const cartContainer = document.getElementById('cartItems');
+    cartContainer.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach(id => {
+        const product = products.find(p => p.id === id);
+        if(product){
+            total += product.price;
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <p>${product.name_en} / ${product.name_hu} - £${product.price.toFixed(2)}
+                <button onclick="removeFromCart(${product.id})">Remove / Törlés</button></p>
+            `;
+            cartContainer.appendChild(div);
+        }
+    });
+
+    document.getElementById('cartTotal').innerText = `Összesen / Total: £${total.toFixed(2)}`;
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(id => id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
+}
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    alert('Checkout functionality will be added soon!');
+});
+
+displayCart();

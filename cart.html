@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatArt Kosár / Cart</title>
+    <title>CatArt - Kosár / Cart</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -14,33 +14,28 @@
             <span class="slogan">Handmade Joy for Cats</span>
         </div>
         <nav>
-            <a href="index.html">Vissza / Back</a>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Vissza / Back</a>
+            </div>
         </nav>
     </header>
 
     <main>
-        <h1>Kosár / Cart</h1>
-        <section id="cart-items">
-            <!-- Kosár termékek ide töltődnek be JS-sel -->
-             <section id="cart-items"></section>
-        <div id="total">
-            <strong>Összesen / Total: </strong><span id="totalPrice">0 Ft</span>
-        </div>
-        <div id="paypal-button-container"></div>
-
+        <section id="cart">
+            <h2>Kosár / Cart</h2>
+            <div id="cartItems">
+                <!-- Kosár termékek JS-sel -->
+            </div>
+            <p id="cartTotal">Összesen / Total: £0.00</p>
+            <button id="checkoutBtn">Checkout</button>
         </section>
-        <div id="total">
-            <strong>Összesen / Total: </strong><span id="totalPrice">0 Ft</span>
-        </div>
-        <button id="checkoutBtn">Fizetés / Checkout</button>
     </main>
 
     <footer>
         <p>&copy; 2025 CatArt. All rights reserved.</p>
     </footer>
 
-    <script src="./assets/js/cart.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
-
+    <script src="./assets/Js/cart.js"></script>
 </body>
 </html>

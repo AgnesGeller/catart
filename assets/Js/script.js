@@ -1,52 +1,35 @@
 let currentLang = 'hu';
-let products = [];
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-fetch('./js/products.json')
-  .then(res => res.json())
-  .then(data => {
-    products = data;
-    renderProducts();
-  });
-
-function setLang(lang){
-  currentLang = lang;
-  renderProducts();
+function setLang(lang) {
+    currentLang = lang;
+    displayProducts();
 }
 
-function renderProducts(){
-  const container = document.getElementById('products');
-  container.innerHTML = '';
-  products.forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'product-card';
-    div.innerHTML = `
-      <img src="./img/${p.image}" alt="${currentLang === 'hu' ? p.name_hu : p.name_en}">
-      <h3>${currentLang === 'hu' ? p.name_hu : p.name_en}</h3>
-      <p>${currentLang === 'hu' ? p.description_hu : p.description_en}</p>
-      <span>${p.price} Ft</span>
-      <button class="add-to-cart" onclick="addToCart('${p.id}')">Add to Cart</button>
-    `;
-    container.appendChild(div);
-  });
+async function displayProducts() {
+    const response = await fetch('./assets/Js/products.json');
+    const products = await response.json();
+
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = '';
+
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <img src="${product.image}" alt="${currentLang === 'hu' ? product.name_hu : product.name_en}">
+            <h3>${currentLang === 'hu' ? product.name_hu : product.name_en}</h3>
+            <p>£${product.price.toFixed(2)}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart / Kosárba</button>
+        `;
+        productsContainer.appendChild(card);
+    });
 }
 
-function addToCart(id){
-  const product = products.find(p => p.id === id);
-  if(product){
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${currentLang === 'hu' ? product.name_hu : product.name_en} hozzáadva a kosárhoz!`);
-  }
-}
+displayProducts();
 
+// Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-
 hamburger.addEventListener('click', () => {
-    if(navLinks.style.display === 'flex'){
-        navLinks.style.display = 'none';
-    } else {
-        navLinks.style.display = 'flex';
-    }
+    navLinks.classList.toggle('show');
 });
