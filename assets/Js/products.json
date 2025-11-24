@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cat-toy-001",
+    "name_hu": "Horgolt macskajáték - csörgős",
+    "name_en": "Crochet Cat Toy - with Bell",
+    "price": 2990,
+    "image": "https://via.placeholder.com/150?text=Cat+Toy+1",
+    "description_hu": "Kézzel horgolt kerek macskajáték, csörgővel",
+    "description_en": "Hand-crocheted round cat toy with bell"
+  },
+  {
+    "id": "cat-toy-002",
+    "name_hu": "Horgolt macskajáték - egér forma",
+    "name_en": "Crochet Cat Toy - Mouse Shape",
+    "price": 2590,
+    "image": "https://via.placeholder.com/150?text=Cat+Toy+2",
+    "description_hu": "Kézzel horgolt egér forma, cicák kedvence",
+    "description_en": "Hand-crocheted mouse shape, cats' favorite"
+  },
+  {
+    "id": "cat-toy-003",
+    "name_hu": "Horgolt macskajáték - gömb",
+    "name_en": "Crochet Cat Toy - Ball",
+    "price": 1990,
+    "image": "https://via.placeholder.com/150?text=Cat+Toy+3",
+    "description_hu": "Kicsi horgolt labda csörgővel, játék a cicáknak",
+    "description_en": "Small crochet ball with bell, fun for cats"
+  }
+]
+

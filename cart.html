@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatArt Kosár / Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./assets/img/withoutbarna.png" alt="CatArt Logo">
+            <span class="slogan">Handmade Joy for Cats</span>
+        </div>
+        <nav>
+            <a href="index.html">Vissza / Back</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Kosár / Cart</h1>
+        <section id="cart-items">
+            <!-- Kosár termékek ide töltődnek be JS-sel -->
+             <section id="cart-items"></section>
+        <div id="total">
+            <strong>Összesen / Total: </strong><span id="totalPrice">0 Ft</span>
+        </div>
+        <div id="paypal-button-container"></div>
+
+        </section>
+        <div id="total">
+            <strong>Összesen / Total: </strong><span id="totalPrice">0 Ft</span>
+        </div>
+        <button id="checkoutBtn">Fizetés / Checkout</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CatArt. All rights reserved.</p>
+    </footer>
+
+    <script src="./assets/js/cart.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
+
+</body>
+</html>
