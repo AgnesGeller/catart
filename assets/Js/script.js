@@ -46,9 +46,10 @@ function setLanguage(lang) {
   document.getElementById("cart").innerText = translations[lang].cart;
 }
 
-// Hamburger menü
+// Hamburger menü toggle
 document.getElementById("hamburger").addEventListener("click", function() {
   document.getElementById("menu").classList.toggle("open");
+  document.getElementById("sideMenu").classList.toggle("open");
 });
 
 // Első betöltés

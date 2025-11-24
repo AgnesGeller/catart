@@ -38,10 +38,6 @@ header .slogan {
 }
 
 /* Navigáció */
-nav {
-    text-align: left;
-}
-
 #menu {
     display: flex;
     gap: 15px;
@@ -177,5 +173,15 @@ footer {
 
     #menu.open {
         display: flex;
+    }
+
+    aside#sideMenu.open {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #ffe6eb;
+        padding: 20px;
     }
 }
