@@ -10,3 +10,14 @@
     {"id":9,"name_hu":"Macskajáték 9","name_en":"Cat Toy 9","price":6.10,"image":"./assets/img/9.png"},
     {"id":10,"name_hu":"Macskajáték 10","name_en":"Cat Toy 10","price":7.20,"image":"./assets/img/10.png"}
 ]
+
+{
+  "hu": {
+    "title": "Macska Művészet Webshop",
+    "cart": "Kosár"
+  },
+  "en": {
+    "title": "Cat Art Webshop",
+    "cart": "Cart"
+  }
+}
