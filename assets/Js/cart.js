@@ -1,12 +1,14 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentLang = localStorage.getItem('lang') || 'hu';
+const exchangeRate = 480;
 
 function addToCart(productId) {
     if (!cart.includes(productId)) {
         cart.push(productId);
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Termék hozzáadva a kosárhoz / Product added to cart');
+        alert(currentLang === 'hu' ? 'Termék hozzáadva a kosárhoz' : 'Product added to cart');
     } else {
-        alert('Ez a termék már a kosárban van / Already in cart');
+        alert(currentLang === 'hu' ? 'Ez a termék már a kosárban van' : 'Already in cart');
     }
 }
 
@@ -25,14 +27,17 @@ async function displayCart() {
             total += product.price;
             const div = document.createElement('div');
             div.innerHTML = `
-                <p>${product.name_en} / ${product.name_hu} - £${product.price.toFixed(2)}
-                <button onclick="removeFromCart(${product.id})">Remove / Törlés</button></p>
+                <p>${currentLang === 'hu' ? product.name_hu : product.name_en} - ${showPrice(product.price, currentLang)}
+                <button onclick="removeFromCart(${product.id})">${currentLang === 'hu' ? 'Törlés' : 'Remove'}</button></p>
             `;
             cartContainer.appendChild(div);
         }
     });
 
-    document.getElementById('cartTotal').innerText = `Összesen / Total: £${total.toFixed(2)}`;
+    document.getElementById('cartTotal').innerText =
+        currentLang === 'hu'
+            ? `Összesen: ${showPrice(total, currentLang)}`
+            : `Total: ${showPrice(total, currentLang)}`;
 }
 
 function removeFromCart(productId) {
@@ -42,7 +47,19 @@ function removeFromCart(productId) {
 }
 
 document.getElementById('checkoutBtn').addEventListener('click', () => {
-    alert('Checkout functionality will be added soon!');
+    alert(currentLang === 'hu'
+        ? 'A fizetés hamarosan elérhető lesz!'
+        : 'Checkout functionality will be added soon!');
 });
 
+// Ár megjelenítése nyelv szerint
+function showPrice(baseUSD, lang) {
+  if (lang === "hu") {
+    return (baseUSD * exchangeRate) + " Ft";
+  } else {
+    return "£" + baseUSD.toFixed(2);
+  }
+}
+
+// Első betöltéskor
 displayCart();

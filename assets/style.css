@@ -177,11 +177,4 @@ footer {
 
     aside#sideMenu.open {
         display: block;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background-color: #ffe6eb;
-        padding: 20px;
-    }
-}
+        position: absolute

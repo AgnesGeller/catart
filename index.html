@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatArt - Handmade Joy for Cats</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatArt - Kosár</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo header">
-            <img src="./assets/img/withoutbarna.png" alt="CatArt Logo">
-            <span class="slogan" id="title">Handmade Joy for Cats</span>
-        </div>
+  <header>
+    <div class="logo header">
+      <img src="./assets/img/withoutbarna.png" alt="CatArt Logo">
+      <span class="slogan" id="title">Handmade Joy for Cats</span>
+    </div>
 
-        <nav>
-            <!-- Hamburger gomb mobilra -->
-            <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav>
+      <!-- Hamburger gomb mobilra -->
+      <div class="hamburger" id="hamburger">&#9776;</div>
 
-            <!-- Menü, amit a hamburger nyit/zár -->
-            <div id="menu">
-                <button onclick="setLang('hu')">HU</button>
-                <button onclick="setLang('en')">EN</button>
-                <a href="cart.html" id="cart">Kosár / Cart</a>
-            </div>
-        </nav>
-    </header>
+      <!-- Menü -->
+      <div id="menu">
+        <button onclick="setLang('hu')">HU</button>
+        <button onclick="setLang('en')">EN</button>
+        <a href="cart.html" id="cart">Kosár / Cart</a>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Oldalsó menü asztali nézethez -->
-    <aside id="sideMenu">
-        <ul>
-            <li><a href="#">Home / Főoldal</a></li>
-            <li><a href="#">About / Rólunk</a></li>
-            <li><a href="#">Contact / Kapcsolat</a></li>
-        </ul>
-    </aside>
+  <!-- Oldalsó menü -->
+  <aside id="sideMenu">
+    <ul>
+      <li><a href="index.html">Home / Főoldal</a></li>
+      <li><a href="#">About / Rólunk</a></li>
+      <li><a href="#">Contact / Kapcsolat</a></li>
+    </ul>
+  </aside>
 
-    <main>
-        <section id="products" class="product-grid">
-            <!-- Termékek ide töltődnek JS segítségével -->
-        </section>
-    </main>
+  <main>
+    <h2 id="cartTitle">Kosár</h2>
+    <div id="cartItems"></div>
+    <p id="cartTotal"></p>
+    <button id="checkoutBtn">Fizetés / Checkout</button>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 CatArt. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 CatArt. All rights reserved.</p>
+  </footer>
 
-    <script src="./assets/Js/script.js"></script>
+  <!-- JS fájlok -->
+  <script src="./assets/Js/script.js"></script>
+  <script src="./assets/Js/cart.js"></script>
 </body>
 </html>

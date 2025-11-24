@@ -1,11 +1,19 @@
-let currentLang = 'hu';
+let currentLang = localStorage.getItem('lang') || 'hu';
 const exchangeRate = 480;
+let translations = {};
+
+// Fordítások betöltése
+async function loadTranslations() {
+    const response = await fetch('./assets/Js/translations.json');
+    translations = await response.json();
+}
 
 // Nyelvváltás
 function setLang(lang) {
     currentLang = lang;
-    setLanguage(lang);   // frissíti a címeket
-    displayProducts();   // frissíti a termékeket
+    localStorage.setItem('lang', lang);
+    updateTexts();
+    displayProducts();
 }
 
 // Termékek megjelenítése
@@ -31,26 +39,30 @@ async function displayProducts() {
     });
 }
 
-// Árfolyam kezelése
+// Árfolyam
 function showPrice(baseUSD, lang) {
   if (lang === "hu") {
     return (baseUSD * exchangeRate) + " Ft";
   } else {
-    return "$" + baseUSD;
+    return "£" + baseUSD.toFixed(2);
   }
 }
 
 // Statikus szövegek frissítése
-function setLanguage(lang) {
-  document.getElementById("title").innerText = translations[lang].title;
-  document.getElementById("cart").innerText = translations[lang].cart;
+function updateTexts() {
+  document.getElementById("title").innerText = translations[currentLang].title;
+  document.getElementById("cart").innerText = translations[currentLang].cart;
 }
 
-// Hamburger menü toggle
+// Hamburger menü
 document.getElementById("hamburger").addEventListener("click", function() {
   document.getElementById("menu").classList.toggle("open");
   document.getElementById("sideMenu").classList.toggle("open");
 });
 
-// Első betöltés
-displayProducts();
+// Első betöltéskor
+window.addEventListener('DOMContentLoaded', async () => {
+    await loadTranslations();
+    updateTexts();
+    displayProducts();
+});
